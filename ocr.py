@@ -19,3 +19,7 @@ def detect_text(path):
                     for vertex in text.bounding_poly.vertices])
 
         print('bounds: {}'.format(','.join(vertices)))
+
+
+if __name__ == 'main':
+    detect_text('./inputs/electronic/electronic1.jpg')
