@@ -19,23 +19,25 @@
           foreach ($result as $key => $value) {
             echo "Who ordered " . $key . "? <br>";
             echo "<input type=\"text\" name=\"names" . $i . "\"><br><br>";
-            $i = $i + 1;
+            $i++;
           }
           echo "<input type=\"submit\" value=\"Submit\" class=\"submit-search\">";
           echo "</form><br>";
-    
-
-          echo "value of i: " . $i . "<br>";
           
           # create php array
-
-          # for each $i
+          $names_list = array();
+          $j = 0;
+         
+          # for each $i...
           foreach ($result as $key => $value) {
-            # POST names$i
-            # add posted variable to php array
+            $post_string = "names{$j}";
+            $name_list[$j] = $_POST[$post_string];
+            $j++;
           }
-          // $names_list = $_POST["names"];
-          // echo $names_list;
+
+          # array of names: $name_list (contains string of names for each field, separated by commas)
+          # process this array in python
+
         ?>
     </div>
   </body>
