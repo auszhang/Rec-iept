@@ -8,8 +8,8 @@
     <h1> Order Breakdown </h1>
     <p><strong>Enter names separated by commas below.</strong></p>
     <?php 
-      # fetch array for items => prices from dict_helper.py
-      $result = json_decode(exec('python dict_helper.py'), true);
+      // fetch array for items => prices from dict_helper.py
+      $result = json_decode(exec('python3 main.py'), true);
     ?>
     <div class = "search-form">
         <?php 
