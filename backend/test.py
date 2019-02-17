@@ -1,0 +1,2 @@
+description= "0290\nCECILIA L\nBJ'S SAN RAFAEL\nLOCATION #495\nTABLE 415 #Party O\nSvrck: 2 5:26p 11/08/14\nNext time pay when you want\nwith BJsMobilePay.com!\nNo more waiting for your check!\nPay as soon as you are\nfinished ordering.\nAsk your server for more\ndetails today.\nBJS FRITOS NACHOS\nBH DBL DELUXE BURGER\n7.50\n10.95\nSub Total: 18.45\nTax: 1.71\nSub Total: 20.16\n1/08 5:52pTOTAL: 20.16\n"
+print description

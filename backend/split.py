@@ -1,13 +1,20 @@
-from decimal import Decimal 
+import json
 
 # SAMPLE INFORMATION FOR TESTING: obtain actual values from GCP:
 sample_easy1 = {'BJS FRITOS NACHOS':7.50, 'BH DBL DELUXE BURGER':10.95}
-subtotal = 18.45 #could calculate this later?
-tax = 1.71
-total_no_tip = 20.16
-tip_percent = 15
+print json.dumps(sample_easy1)
+
+# get subtotal
+subtotal = 0
+for k,v in sample_easy1.items():
+    subtotal = subtotal + float(v)
+
+# get total without tip from tax and subtotal
+tax = 1.71 #provided???
+total_no_tip = subtotal + tax
 
 # convert tip_percent to decimal:
+tip_percent = 15
 tip_decimal = tip_percent/100.0
 
 # caulculate tip amount
