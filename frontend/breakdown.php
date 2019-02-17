@@ -7,7 +7,7 @@
   <body>
     <h1> Order Breakdown </h1>
     <div class = "search-form">
-        <form action="hack.php" method="POST">
+        <form action="breakdown.php" method="POST">
             <strong>Who ordered [item name placeholder]? </strong><br>
             <input type="text" name="names_list"><br><br>
             <input type="submit" value="Next item" class="submit-search">
@@ -18,7 +18,7 @@
         $names_list = $_POST["names_list"];
         echo $names_list;
 
-        $result = json_decode(exec('python myscript.py'), true);
+        $result = json_decode(exec('python dict_helper.py'), true);
         echo $result['BJS FRITOS NACHOS'];
     ?>
   </body>
