@@ -6,20 +6,37 @@
   </head>
   <body>
     <h1> Order Breakdown </h1>
-    <div class = "search-form">
-        <form action="breakdown.php" method="POST">
-            <strong>Who ordered [item name placeholder]? </strong><br>
-            <input type="text" name="names_list"><br><br>
-            <input type="submit" value="Next item" class="submit-search">
-        </form><br>
-    </div>
-
-    <?php
-        $names_list = $_POST["names_list"];
-        echo $names_list;
-
-        $result = json_decode(exec('python dict_helper.py'), true);
-        echo $result['BJS FRITOS NACHOS'];
+    <p><strong>Enter names separated by commas below.</strong></p>
+    <?php 
+      # fetch array for items => prices from dict_helper.py
+      $result = json_decode(exec('python dict_helper.py'), true);
     ?>
+    <div class = "search-form">
+        <?php 
+          # iteratively create forms for each item in the receipt
+          echo "<form action=\"\" method=\"POST\"><br>";
+          $i = 0;
+          foreach ($result as $key => $value) {
+            echo "Who ordered " . $key . "? <br>";
+            echo "<input type=\"text\" name=\"names" . $i . "\"><br><br>";
+            $i = $i + 1;
+          }
+          echo "<input type=\"submit\" value=\"Submit\" class=\"submit-search\">";
+          echo "</form><br>";
+    
+
+          echo "value of i: " . $i . "<br>";
+          
+          # create php array
+
+          # for each $i
+          foreach ($result as $key => $value) {
+            # POST names$i
+            # add posted variable to php array
+          }
+          // $names_list = $_POST["names"];
+          // echo $names_list;
+        ?>
+    </div>
   </body>
 </html>
