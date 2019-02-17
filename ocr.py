@@ -113,11 +113,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()                                               
     parser.add_argument("--file", "-f", type=str, required=True)
     args = parser.parse_args()
-
     w_list = detect_text()
     # './inputs/easy/easy1.jpg'
     tester = find_same_line(w_list)
     # print(tester)
-    yo = extract_item_price(tester)
-
-    print(yo)
+    item_price = extract_item_price(tester)

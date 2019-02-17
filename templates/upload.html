@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Index</title>
+	<title>Upload</title>
 </head>
 <body>
-    <img src="{{ user_image }}" alt="User Image">
-</body>
+<form method=POST enctype=multipart/form-data action = "{{ url_for('upload') }}">
+	<input type=file name=photo>
+	<input type ="submit">
+</form>
+</head>
+
 </html>
