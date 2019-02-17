@@ -109,10 +109,18 @@ def extract_item_price(line_dic):
             
         #     new_dic[new_key] = float(last_item)
 
+special_words = ['subtotal', 'sub total', 'total', 'tax', 'gratuity', 'tip']
+def checker(lst, word):
+    return re.sub("[^a-zA-Z]", "", word).lower() in lst
+
 def mainer(filepath):
     w_list = detect_text(filepath)
     tester = find_same_line(w_list)
-    item_price = extract_item_price(tester)
+    temp_dic = extract_item_price(tester)
+    item_price = {}
+    for item, price in temp_dic.items():
+        if not checker(special_words, item):
+            item_price[item] = price
     return item_price
 # if __name__ == '__main__':
     # parser = argparse.ArgumentParser()                                               

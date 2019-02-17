@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from flask.ext.uploads import UploadSet, configure_uploads, IMAGES
-import ocr, json
+import ocr, json, split
 
 app = Flask(__name__)
 
@@ -37,7 +37,7 @@ def breakdown():
 			# print(request.form[])
 			item_name[k] = request.form[k]
 			# i += 1 
-		return render_template('end.html', dict2 = item_name)
+		return render_template('end.html', dict2 = split.outputter(item_price, item_name))
 	return render_template('breakdown.html')
 
 if __name__ == "__main__":
