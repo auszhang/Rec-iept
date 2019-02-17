@@ -3,18 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>Orders</title>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />--> 
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet">
   </head>
   <body>
-    <h1><strong>Order Breakdown</strong></h1>
-    <p><strong>Enter names separated by commas below.</strong></p>
-    <div class = "search-form">
-        <form action="breakdown" method="POST"><br>
-        {% for k,v in dict1.items() %}
-        Who ordered {{k}}?
-        <input type="text" name="{{k}}"><br><br>
-        {% endfor %}
-        <input type="submit" value="Submit" class="submit-search">
-        </form><br>
+    <div class="main-text">
+      <h1><strong>Order Breakdown</strong></h1>
+      <p><strong>Enter names separated by commas below.</strong></p>
+      <div class = "search-form">
+          <form action="breakdown" method="POST"><br>
+          {% for k,v in dict1.items() %}
+          Who ordered {{k}}?
+          <input type="text" name="{{k}}"><br><br>
+          {% endfor %}
+          <br>
+          <input type="submit" value="Submit" class="submit-button">
+          </form><br>
+      </div>
     </div>
   </body>
 </html>

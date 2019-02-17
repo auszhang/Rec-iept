@@ -2,12 +2,20 @@
 <html>
 	<head>
 		<title>Upload a reciept</title>
+		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />--> 
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet">
 	</head>
 	<body>
-		<h1><strong>Welcome to Rec-eipt! Upload a picture of receipt.</strong></h1>
-		<form method=POST enctype=multipart/form-data action = "{{ url_for('upload') }}">
-			<input type=file name=photo><br><br>
-			<input type ="submit">
-		</form>
+		<div class="main-text">
+			<h1><strong>Welcome to Rec-eipt!</strong></h1>
+			<p><strong>Upload a picture of a receipt below:</strong></p>
+			<form method=POST enctype=multipart/form-data action = "{{ url_for('upload') }}">
+				<input type=file name=photo ><br><br>
+				<input type ="submit" class = "submit-button">
+			</form>
+		</div>
 	</body>
 </html>

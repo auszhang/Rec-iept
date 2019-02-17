@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-            <h1><strong>Receipt Handling</strong></h1>
-        </title>
-    </head>
+        <title>Receipt Handling</title>
+            <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" type="text/css" media="screen" href="main.css" />--> 
+            <link rel="stylesheet" href="styles.css">
+            <link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet">
+        </head>
     <body>
-    <h1><strong>Result:</strong></h1>
-    {% for k,v in dict2.items() %}
-        {{k}} pays {{v}} <br><br>
-    {% endfor %}
+        <div class="main-text">
+            <h1><strong>The Receipt: Broken Down</strong></h1>
+            {% for k,v in dict2.items() %}
+                {{k}} pays {{v}} <br><br>
+            {% endfor %}
+            <br><br>
+            <div>
+                <button class="submit-button" onclick="window.location.href='upload.html'">Upload Another</button>
+            </div>
+        </div>
     </body>
 </html>
