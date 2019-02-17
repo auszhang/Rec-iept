@@ -15,37 +15,49 @@ import re
 #     # get subtotal
 #     for k,v in dictionary:
 #         global subtotal += float(v)
+special_words = ['tax', 'gratuity', 'tip']
+
 def outputter(item_price, item_name):
-    special_words = ['subtotal', 'sub total', 'total', 'tax', 'gratuity', 'tip']
+    # special_words = ['subtotal', 'sub total', 'total', 'tax', 'gratuity', 'tip']
     subtotal = 0.0
     tax = 0.0
     total = 0.0
     gratuity = 0.0
     tip = 0.0
     only_items = {}
+    specials = {}
+    specials['tax'] = 0.0
+    specials['gratuity'] = 0.0
+    specials['tip'] = 0.0
     for k,v in item_price.items():
-        lol = re.sub("[^a-zA-Z]", "", k).lower()
-        if 'subtotal' in lol or 'total' in lol or 'sub total' in lol:
-            continue
+        lol = re.sub("[^A-Za-z]", "", k).lower()
+        if False:
+            print()
+        # elif 'subtotal' in lol or 'total' in lol or 'sub total' in lol:
+        #     continue
         elif 'tax' == lol:
-            if tax == 0.0:
-                tax = float(v)
+            print('fdafds')
+            if specials['tax'] == 0.0:
+                specials['tax'] = float(v)
         elif 'gratuity' == lol:
-            if gratuity == 0.0:
-                gratuity = float(v)
+            if specials['gratuity'] == 0.0:
+                specials['gratuity'] = float(v)
         elif 'tip' == lol:
-            if tip == 0.0:
-                tip = float(v)
+            if specials['tip'] == 0.0:
+                specials['tip'] = float(v)
         else:
             subtotal += v
-            only_items[k] = float(v)
+            if not checker(special_words, k):
+                only_items[k] = float(v)
 
-    total = subtotal + tip + tax + gratuity
+    total = subtotal + specials.get('tip', 0.0) + specials.get('tax', 0.0) + \
+        specials.get('gratuity', 0.0)
 
     item_contributions = {}
 
     for k, v in only_items.items():
-        item_contributions[k] = v/subtotal * total
+        if not checker(special_words, k):
+            item_contributions[k] = v/subtotal * total
 
     person_pays = {}
 
@@ -53,18 +65,22 @@ def outputter(item_price, item_name):
         names = v.split(",")
         for name in names:
             lower_name = name.lower()
-            if 'total' not in lower_name: 
-                new_name = name.strip()
-                person_pays[new_name] = 0
+            # if 'total' not in lower_name: 
+            new_name = name.strip()
+            person_pays[new_name] = 0
 
     for k, v in item_name.items():
         food_item = k
-        food_participants = v.split(",")
-        num_eaters = len(food_participants)
-        for eater in food_participants:
-            new_eater = eater.strip()
-
-            person_pays[new_eater] += item_contributions[food_item] / num_eaters
+        if not checker(special_words, food_item):
+            food_participants = v.split(",")
+            num_eaters = len(food_participants)
+            for eater in food_participants:
+                new_eater = eater.strip()
+                cont = item_contributions[food_item] / num_eaters
+                person_pays[new_eater] += cont
+            # person_pays[new_eater] += item_contributions[food_item] / num_eaters
+    for k,v in person_pays.items():
+        person_pays[k] = round(person_pays[k], 2)
     return person_pays
     # for k,v in person_pays.items():
     #     print('The person named ' + k + ' pays ' + str(v))
