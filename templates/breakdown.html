@@ -8,11 +8,13 @@
     <h1> Order Breakdown </h1>
     <p><strong>Enter names separated by commas below.</strong></p>
     <div class = "search-form">
-        <form action="" method="POST"><br>
+        <form action="breakdown" method="POST"><br>
         {% for k,v in dict1.items() %}
-        "Who ordered" {{k}} {{v}} "?"
-        <input type="text" name="names"><br><br>
+        Who ordered {{k}}?
+        <input type="text" name="{{k}}"><br><br>
         {% endfor %}
+        <input type="submit" value="Submit" class="submit-search">
+        </form><br>
     </div>
   </body>
 </html>

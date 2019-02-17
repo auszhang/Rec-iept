@@ -5,5 +5,8 @@
              </title>
          </head>
          <body>
+        	{% for k,v in dict2.items() %}
+        		{{k}} pays {{v}} <br><br>
+        	{% endfor %}
          </body>
      </html>
