@@ -4,6 +4,13 @@ import json
 sample_easy1 = {'BJS FRITOS NACHOS':7.50, 'BH DBL DELUXE BURGER':10.95}
 print json.dumps(sample_easy1)
 
+actual_subtotal = 0
+actual_total 
+subtotal = 0
+# for k, v in sample_easy1.items():
+#     if 'subtotal' in re.sub('[', '', k).lower()
+#         subtotal = v
+
 # get subtotal
 subtotal = 0
 for k,v in sample_easy1.items():

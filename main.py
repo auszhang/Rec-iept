@@ -11,13 +11,15 @@ photos = UploadSet('photos', IMAGES)
 app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
 configure_uploads(app, photos)
 
-
+filename = photos.save(request.files['photo'])
+pather = 'static/img/' + str(filename)
+item_price = ocr.mainer(pather)
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST' and 'photo' in request.files:
-    	filename = photos.save(request.files['photo'])
-    	pather = 'static/img/' + str(filename)
+    	# filename = photos.save(request.files['photo'])
+    	# pather = 'static/img/' + str(filename)
     	return str(ocr.mainer(pather))
     return render_template('upload.html')
 
