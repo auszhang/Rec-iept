@@ -12,7 +12,7 @@ configure_uploads(app, photos)
 
 
 
-@app.route('/upload_file', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST' and 'photo' in request.files:
     	filename = photos.save(request.files['photo'])
@@ -25,8 +25,6 @@ def upload_file():
     #     file.save(f)
 
     # return render_template('end.html')
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
