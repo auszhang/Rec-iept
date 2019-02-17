@@ -1,23 +1,30 @@
-from flask import Flask, render_template, request             
+from flask import Flask, render_template, request
+from flask.ext.uploads import UploadSet, configure_uploads, IMAGES
+
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'uploadfolder'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+photos = UploadSet('photos', IMAGES)
 
-@app.route("/")
-def home():
-    return render_template("receipt.html")
 
-@app.route('/upload', methods=['POST'])
+# UPLOAD_FOLDER = 'uploadfolder'
+app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
+configure_uploads(app, photos)
+
+
+
+@app.route('/upload_file', methods=['GET', 'POST'])
 def upload_file():
-    if request.method == 'POST':
-        file = request.files['image']
-        f = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+    if request.method == 'POST' and 'photo' in request.files:
+    	filename = photos.save(request.files['photo'])
+    	return filename
+    return render_template('upload.html')
+    #     file = request.files['image']
+    #     f = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         
-        # add your custom code to check that the uploaded file is a valid image and not a malicious file (out-of-scope for this post)
-        file.save(f)
+    #     # add your custom code to check that the uploaded file is a valid image and not a malicious file (out-of-scope for this post)
+    #     file.save(f)
 
-    return render_template('end.html')
+    # return render_template('end.html')
 
 
 
