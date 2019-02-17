@@ -1,6 +1,8 @@
 import io
 import os
 import re
+import sys
+import argparse
 # if re.match("^\d+?\.\d+?$", element) is None:
 #     print "Not float"
 
@@ -25,7 +27,7 @@ def detect_text(path):
 
     response = client.text_detection(image=image)
     texts = response.text_annotations
-    print('Texts:')
+    # print('Texts:')
 
     word_list = []
     i = 0
@@ -107,8 +109,15 @@ def extract_item_price(line_dic):
             
         #     new_dic[new_key] = float(last_item)
 
-w_list = detect_text('./inputs/easy/easy1.jpg')
-tester = find_same_line(w_list)
-print(tester)
-yo = extract_item_price(tester)
-print(yo)
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()                                               
+    parser.add_argument("--file", "-f", type=str, required=True)
+    args = parser.parse_args()
+
+    w_list = detect_text()
+    # './inputs/easy/easy1.jpg'
+    tester = find_same_line(w_list)
+    # print(tester)
+    yo = extract_item_price(tester)
+
+    print(yo)
