@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from flask.ext.uploads import UploadSet, configure_uploads, IMAGES
+import ocr
 
 app = Flask(__name__)
 
@@ -13,10 +14,11 @@ configure_uploads(app, photos)
 
 
 @app.route('/upload', methods=['GET', 'POST'])
-def upload_file():
+def upload():
     if request.method == 'POST' and 'photo' in request.files:
     	filename = photos.save(request.files['photo'])
-    	return filename
+    	pather = 'static/img/' + str(filename)
+    	return str(ocr.mainer(pather))
     return render_template('upload.html')
     #     file = request.files['image']
     #     f = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
