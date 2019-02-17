@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Recipt Handling</title>
+    </head> 
+    <body>
+        <h1>Receipt Handling</h1>
+            <p>SANDDY</p> <!-- This is traditional, you'll find that out! -->
+            <input type="file" accept="image/*" id="file-input">
+                <script>
+                    const fileInput = document.getElementById('file-input');
+
+                    fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
+                </script>
+
+            <!-- <div id="target">You can drag an image file here</div>
+                <script>
+                    const target = document.getElementById('target');
+
+                    target.addEventListener('drop', (e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+
+                        doSomethingWithFiles(e.dataTransfer.files);
+                    });
+
+                    target.addEventListener('dragover', (e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+
+                        e.dataTransfer.dropEffect = 'copy';
+                    });
+                </script> -->
+    
+                
+    </body>
+</html>
